@@ -1,0 +1,31 @@
+{
+    "name": "string-tools",
+    "homepage": "https://github.com/khrome/string-tools",
+    "version": "0.0.1-alpha",
+    "main": "string-tools.js",
+    "description": "",
+    "keywords": [
+        "string",
+        "utilities",
+        "tools"
+    ],
+    "author": "Abbey Hawk Sparrow <@khrome> (http://patternweaver.com)",
+    "contributors": [],
+    "bugs": {
+        "url": "https://github.com/khrome/string-tools/issues"
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/khrome/string-tools.git"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "mocha": "*",
+        "should": "*"
+    },
+    "optionalDependencies": {},
+    "engines": {
+        "node": "*"
+    }
+}
