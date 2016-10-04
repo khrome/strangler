@@ -43,6 +43,8 @@ Tests whether the string contains a particular substring or set of substrings
 | input | <code>string</code> | input string to test |
 | candidate | <code>string</code> or <code>Array</code> | the substring to test |
 
+
+**Example**
 ```js
 'elongated'.contains('gate'); //returns true;
 'elongated'.contains(['long', 'gate']); //returns true;
@@ -60,6 +62,8 @@ Tests whether the string begins with a particular substring
 | input | <code>string</code> | input string to test |
 | candidate | <code>string</code> | the substring to test |
 
+
+**Example**
 ```js
 'max'.beginsWith('m'); //return true;
 ```
@@ -75,6 +79,8 @@ Tests whether the string ends with a particular substring
 | input | <code>string</code> | input string to test |
 | candidate | <code>string</code> | the substring to test |
 
+
+**Example**
 ```js
 'max'.endsWith('x'); //return true;
 ```
@@ -91,6 +97,8 @@ like String.split(), but it will honor the opening and closing of quotes, so a d
 | delimiter | <code>string</code> | ',' | the pattern to split on |
 | quotes | <code>Array</code> | ["'", '""'] | the quotes to respect |
 
+
+**Example**
 ```js
 'a, b, c="r, u, d", d'.splitHonoringQuotes(',');
 ```
