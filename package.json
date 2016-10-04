@@ -1,8 +1,8 @@
 {
-    "name": "string-tools",
-    "homepage": "https://github.com/khrome/string-tools",
-    "version": "0.0.1-alpha",
-    "main": "string-tools.js",
+    "name": "strangler",
+    "homepage": "https://github.com/khrome/strangler",
+    "version": "0.1.0",
+    "main": "strangler.js",
     "description": "",
     "keywords": [
         "string",
@@ -12,14 +12,16 @@
     "author": "Abbey Hawk Sparrow <@khrome> (http://patternweaver.com)",
     "contributors": [],
     "bugs": {
-        "url": "https://github.com/khrome/string-tools/issues"
+        "url": "https://github.com/khrome/strangler/issues"
     },
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git://github.com/khrome/string-tools.git"
+        "url": "git://github.com/khrome/strangler.git"
     },
-    "dependencies": {},
+    "dependencies": {
+        "string-tools": "*"
+    },
     "devDependencies": {
         "mocha": "*",
         "should": "*"

@@ -1,5 +1,12 @@
 (function(){
+    var s = require("string-tools");
     module.exports = {
+        symbol: s.symbol,
+        escapeRegExp: s.escapeRegExp,
+        fill: s.fill,
+        padRight: s.padRight,
+        repeat: s.repeat,
+        padLeft: s.padLeft,
         startsWith : function(str, sub){
             return str.indexOf(sub) === 0; //likely more expensive than needed
         },
@@ -94,8 +101,14 @@
                     module.exports[name].apply(module.exports[name], Array.prototype.slice.call(arguments).shift(ob))
                 };
             };
-            ['decompose', 'splitHonoringQuotes', 'multiLineAppend', 
-                'contains', 'startsWith', 'endsWith'].forEach(function(functionName){
+            [
+                //string-tool functions
+                'escapeRegExp', 'fill', 'padRight', 'repeat', 'padLeft',
+                //strangler functions
+                'decompose', 'splitHonoringQuotes', 'multiLineAppend', 
+                'contains', 'startsWith', 'startsWithAt', 'endsWith'
+                
+            ].forEach(function(functionName){
                 expose(functionName);
             });
         }

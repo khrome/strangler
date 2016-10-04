@@ -1,7 +1,7 @@
 var should = require("should");
-require('./string-tools').proto();
+require('./strangler');
 
-describe('string-tools', function(){
+describe('strangler', function(){
     
     describe('splitHonoringQuotes', function(){
         
