@@ -1,9 +1,9 @@
 {
     "name": "strangler",
     "homepage": "https://github.com/khrome/strangler",
-    "version": "0.1.2",
+    "version": "0.1.4",
     "main": "strangler.js",
-    "description": "",
+    "description": "A set of string utilities for parsing and assembly",
     "keywords": [
         "string",
         "utilities",
