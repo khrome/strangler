@@ -1,7 +1,7 @@
 {
     "name": "strangler",
     "homepage": "https://github.com/khrome/strangler",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "main": "strangler.js",
     "description": "",
     "keywords": [

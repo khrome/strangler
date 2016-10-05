@@ -41,22 +41,19 @@
             var quote = null;
             for(var lcv=0; lcv < str.length; lcv++){
                 if(inQuote){
-                    if(str[lcv] == quote){
-                        inQuote = false;
-                        //results[results.length-1] += this[lcv];
-                        //results[results.length] = '';
-                    }else{
-                        results[results.length-1] += str.charAt(lcv);
-                    }
+                    if(str[lcv] == quote) inQuote = false;
+                    if(results.length === 0) results.push('');
+                    results[results.length-1] += str.charAt(lcv);
                 }else{
-                    if(quotes.indexOf(str[lcv]) != -1){
-                        quote = str[lcv];
-                        //results[results.length-1] += this[lcv];
-                        inQuote = true;
-                    }else if(str[lcv] == delimiter){
+                    if(str[lcv] == delimiter){
                         results[results.length] = '';
                     }else{
-                        results[results.length-1] += str.charAt(lcv);
+                        if(quotes.indexOf(str[lcv]) != -1){
+                            quote = str[lcv];
+                            inQuote = true;
+                        }
+                        if(results.length === 0) results.push('');
+                        results[results.length-1] += str[lcv];
                     }
                 }
             }
