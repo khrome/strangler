@@ -16,7 +16,7 @@ you can either retain an instance and use it that way:
 or you can just attach to the prototype (this can be OK in an app, but **is a bad idea in a library**):
 
     require('string-tools').proto();
-	stringTool.contains(string, substring);
+	string.contains(substring);
 
 * [string-tools](https://www.npmjs.com/package/string-tools) + [strangler](#module_strangler)
   * [.proto()](#module_strangler.proto)
