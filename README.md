@@ -2,6 +2,10 @@
 strangler.js
 ===============
 
+[![NPM version](https://img.shields.io/npm/v/strangler.svg)]()
+[![npm](https://img.shields.io/npm/dt/strangler.svg)]()
+[![Travis](https://img.shields.io/travis/khrome/strangler.svg)]()
+
 It's a string wrangler, and not nearly as dangerous as it sounds. A set of string utilities which expand those in [string-tools](https://www.npmjs.com/package/string-tools) with additional features.
 
 Usage
