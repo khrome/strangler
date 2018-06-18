@@ -16,7 +16,7 @@ you can either retain an instance and use it that way:
 
     var stringTool = require('strangler');
     stringTool.contains(string, substring);
-    
+
 or you can just attach to the prototype (this can be OK in an app, but **is a bad idea in a library**):
 
     require('string-tools').proto();
@@ -35,12 +35,12 @@ or you can just attach to the prototype (this can be OK in an app, but **is a ba
 ### proto()
 assign these utilities to String.prototype and throw caution to the wind...
 
-**Kind**: static property of <code>[strangler](#module_strangler)</code>  
+**Kind**: static property of <code>[strangler](#module_strangler)</code>
 <a name="module_strangler.contains"></a>
 ### .contains(str, candidate) ⇒ <code>boolean</code>
 Tests whether the string contains a particular substring or set of substrings
 
-**Kind**: static method of <code>[strangler](#module_strangler)</code>  
+**Kind**: static method of <code>[strangler](#module_strangler)</code>
 
 | Param | Type | Description |
 | --- | --- | --- | --- |
@@ -59,7 +59,7 @@ Tests whether the string contains a particular substring or set of substrings
 ### .beginsWith(str, candidate) ⇒ <code>boolean</code>
 Tests whether the string begins with a particular substring
 
-**Kind**: static method of <code>[strangler](#module_strangler)</code>  
+**Kind**: static method of <code>[strangler](#module_strangler)</code>
 
 | Param | Type | Description |
 | --- | --- | --- | --- |
@@ -76,7 +76,7 @@ Tests whether the string begins with a particular substring
 ### .endsWith(str, candidate) ⇒ <code>boolean</code>
 Tests whether the string ends with a particular substring
 
-**Kind**: static method of <code>[strangler](#module_strangler)</code>  
+**Kind**: static method of <code>[strangler](#module_strangler)</code>
 
 | Param | Type | Description |
 | --- | --- | --- | --- |
@@ -93,13 +93,15 @@ Tests whether the string ends with a particular substring
 ### .splitHonoringQuotes(str, [delimiter], [quotes]) ⇒ <code>Array</code>
 like String.split(), but it will honor the opening and closing of quotes, so a delimiter inside a quote won't blow it up.
 
-**Kind**: static method of <code>[strangler](#module_strangler)</code>  
+**Kind**: static method of <code>[strangler](#module_strangler)</code>
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | input | <code>string</code> | | input string to split |
 | delimiter | <code>string</code> | ',' | the pattern to split on |
+| escape | <code>char</code> | | the character to use as an escape value |
 | quotes | <code>Array</code> | ["'", '""'] | the quotes to respect |
+| terminator | <code>char</code> | | the character to split groups |
 
 
 **Example**
@@ -116,7 +118,7 @@ returns
 ### .decompose(str, [delimit], [quotes]) ⇒ <code>Array</code>
 like String.split(), but it will honor the opening and closing of quotes, so a delimiter inside a quote won't blow it up, rather than using a fixed delimiter, you can provide a RegExp to split on. Not as fast as `splitHonoringQuotes`, but much more flexible.
 
-**Kind**: static method of <code>[strangler](#module_strangler)</code>  
+**Kind**: static method of <code>[strangler](#module_strangler)</code>
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -128,7 +130,7 @@ like String.split(), but it will honor the opening and closing of quotes, so a d
 ### .multiLineAppend(str, appendStr) ⇒ <code>string</code>
 returns the two strings which are appended together in a line by line fashion.
 
-**Kind**: static method of <code>[strangler](#module_strangler)</code>  
+**Kind**: static method of <code>[strangler](#module_strangler)</code>
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -154,10 +156,33 @@ attaches to\
 the other'
 ```
 
+strangler.StreamDecomposer
+--------------------------
+<a name="module_strangler.StreamDecomposer"></a>
+### .StreamDecomposer([options]) ⇒ <code>Array</code>
+This class allows you to parse a large string as and to generate events during parse to prevent storing the results in memory. It is an EventEmitter and will generate `token` events for each token it finds and if `options.terminator` is set it will generate `cell` and `row` events.
+
+**Kind**: constructor of <code>[strangler.StreamDecomposer](#module_strangler.StreamDecomposer)</code>
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| options.delimiter | <code>char</code> |  | the character to split individual pieces of data on |
+| options.terminator | <code>char</code> |  | the character to split groups of data on |
+| options.escape | <code>char</code> |  | the character to escape on |
+| options.quotes | <code>Array</code> |  | list of characters to quote with |
+
+<a name="module_strangler.StreamDecomposer.writable"></a>
+### .StreamDecomposer.writable ⇒ <code>string</code>
+Generate a writable stream to pipe a readable stream into in order to parse.
+
+**Kind**: method of <code>[strangler](#module_strangler.StreamDecomposer)</code>
+
+returns [stream.Writable](https://nodejs.org/api/stream.html#stream_class_stream_writable)
+
 Testing
 -------
 just run
-    
+
     mocha
 
 Enjoy,

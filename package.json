@@ -1,12 +1,14 @@
 {
     "name": "strangler",
     "homepage": "https://github.com/khrome/strangler",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "main": "strangler.js",
     "description": "A set of string utilities for parsing and assembly",
     "keywords": [
         "string",
         "utilities",
+        "streams",
+        "string-tools",
         "tools"
     ],
     "author": "Abbey Hawk Sparrow <@khrome> (http://patternweaver.com)",
@@ -20,11 +22,13 @@
         "url": "git://github.com/khrome/strangler.git"
     },
     "dependencies": {
-        "string-tools": "*"
+        "extended-emitter": "^1.0.2",
+        "string-tools": "^1.0.0"
     },
     "devDependencies": {
+        "async": "^2.6.1",
         "mocha": "*",
-        "should": "*"
+        "should": "^13.2.1"
     },
     "optionalDependencies": {},
     "engines": {
