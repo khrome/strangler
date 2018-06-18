@@ -90,7 +90,7 @@ Tests whether the string ends with a particular substring
 ```
 
 <a name="module_strangler.splitHonoringQuotes"></a>
-### .splitHonoringQuotes(str, [delimiter], [quotes]) ⇒ <code>Array</code>
+### .splitHonoringQuotes(str, [delimiter], [escape], [quotes], [terminator]) ⇒ <code>Array</code>
 like String.split(), but it will honor the opening and closing of quotes, so a delimiter inside a quote won't blow it up.
 
 **Kind**: static method of <code>[strangler](#module_strangler)</code>
