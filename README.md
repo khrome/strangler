@@ -159,7 +159,7 @@ the other'
 strangler.StreamDecomposer
 --------------------------
 <a name="module_strangler.StreamDecomposer"></a>
-### .StreamDecomposer([options]) ⇒ <code>Array</code>
+### .StreamDecomposer([options]) ⇒ <code>Class</code>
 This class allows you to parse a large string as and to generate events during parse to prevent storing the results in memory. It is an EventEmitter and will generate `token` events for each token it finds and if `options.terminator` is set it will generate `cell` and `row` events.
 
 **Kind**: constructor of <code>[strangler.StreamDecomposer](#module_strangler.StreamDecomposer)</code>
