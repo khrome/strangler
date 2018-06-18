@@ -172,7 +172,7 @@ This class allows you to parse a large string as and to generate events during p
 | options.quotes | <code>Array</code> |  | list of characters to quote with |
 
 <a name="module_strangler.StreamDecomposer.writable"></a>
-### .StreamDecomposer.writable ⇒ <code>string</code>
+### .StreamDecomposer.writable ⇒ <code>stream.Writable</code>
 Generate a writable stream to pipe a readable stream into in order to parse.
 
 **Kind**: method of <code>[strangler](#module_strangler.StreamDecomposer)</code>
