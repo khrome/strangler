@@ -43,7 +43,7 @@ Tests whether the string contains a particular substring or set of substrings
 **Kind**: static method of <code>[strangler](#module_strangler)</code>
 
 | Param | Type | Description |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | input | <code>string</code> | input string to test |
 | candidate | <code>string</code> or <code>Array</code> | the substring to test |
 
@@ -62,7 +62,7 @@ Tests whether the string begins with a particular substring
 **Kind**: static method of <code>[strangler](#module_strangler)</code>
 
 | Param | Type | Description |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | input | <code>string</code> | input string to test |
 | candidate | <code>string</code> | the substring to test |
 
@@ -79,7 +79,7 @@ Tests whether the string ends with a particular substring
 **Kind**: static method of <code>[strangler](#module_strangler)</code>
 
 | Param | Type | Description |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | input | <code>string</code> | input string to test |
 | candidate | <code>string</code> | the substring to test |
 
