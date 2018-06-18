@@ -127,7 +127,7 @@ like String.split(), but it will honor the opening and closing of quotes, so a d
 | quotes | <code>Array</code> | ["'", '""'] | the quotes to respect |
 
 <a name="module_strangler.multiLineAppend"></a>
-### .multiLineAppend(str, appendStr) ⇒ <code>string</code>
+### .multiLineAppend(str, appendStr, [joinStr]) ⇒ <code>string</code>
 returns the two strings which are appended together in a line by line fashion.
 
 **Kind**: static method of <code>[strangler](#module_strangler)</code>
@@ -136,6 +136,7 @@ returns the two strings which are appended together in a line by line fashion.
 | --- | --- | --- | --- |
 | str | <code>string</code> |  | multiline string prefix |
 | appendStr | <code>string</code> |  | multiline string suffix |
+| joinStr | <code>string</code> |  | the chars to stick between them |
 
 **Example**
 
