@@ -35,17 +35,18 @@
     var groupDone = function(ob){
         var result = ob.state.group;
         ob.state.group = [];
-        ob.emit('row', result);
+        ob.emit('row', {data:result});
     }
 
     StreamDecomposer.prototype.read = function(str){
         if(!str) return; //nothing to do
-        var quotes = this.options.quotes || ['\'', '"']; // todo support multi-char quotes, asymmetric quotes
+        var quotes = this.options.quotes || ["'", '"']; // todo support multi-char quotes, asymmetric quotes
         for(var lcv=0; lcv < str.length; lcv++){
             //todo: short circuit escapes
             if(this.state.escaped){ //always write an escaped char
                 this.state.result += str[lcv];
                 this.state.escaped = false;
+                continue;
             }else{
                 if(this.options.escape && str[lcv] === this.options.escape){
                     this.state.escaped = true;

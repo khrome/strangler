@@ -3,15 +3,22 @@ var util = require("util");
 var strangler = require('./strangler');
 var stream = require('stream');
 var asynk = require('async');
+var test = require('./test-utils');
 
 //determines the random chunk sizes that get streamed during the test
-var largestSegment = 8;
-var smallestSegment = 3;
-
-var cases = {
+test.segments(3, 8);
+test.cases({
     simple : {
         text : 'something"not to split" to split',
         ideal : [ 'something"not to split"', 'to', 'split' ]
+    },
+    twoquotes : {
+        text : 'something"not to split" "to split"',
+        ideal : [ 'something"not to split"', '"to split"' ]
+    },
+    twoquoteswithescape : {
+        text : 'something"not to\\" split" "to split"',
+        ideal : [ 'something"not to\" split"', '"to split"' ]
     },
     unquoted : {
         text : 'something to split',
@@ -21,15 +28,7 @@ var cases = {
         text : 'something"not to sp\\\"lit" to split',
         ideal : [ 'something"not to sp\"lit"', 'to', 'split' ]
     }
-};
-
-var eachCase = function(cb, final){
-    asynk.forEachOfSeries(
-        Object.keys(cases),
-        function(key, index, done){ return cb(cases[key], key, done) },
-        final
-    );
-}
+});
 
 describe('strangler', function(){
 
@@ -86,7 +85,7 @@ describe('strangler', function(){
 
     describe('splitHonoringQuotes', function(){
         describe('splits quoted strings', function(){
-            eachCase(function(testCase, key, done){
+            test.eachCase(function(testCase, key, done){
                 it('for the '+key+' case', function(){
                     strangler.splitHonoringQuotes(
                         testCase.text, ' ', '\\'
@@ -112,7 +111,7 @@ describe('strangler', function(){
 
     describe('StreamDecomposer', function(){
         describe('correctly processes a stream of data', function(){
-            eachCase(function(testCase, key, done){
+            test.eachCase(function(testCase, key, done){
                 var decomposer = new strangler.StreamDecomposer({
                     delimiter : ' ',
                     terminator : "\n",
@@ -127,7 +126,9 @@ describe('strangler', function(){
                         tokens.should.deepEqual(testCase.ideal);
                         complete();
                     });
-                    dummyStream(randomSplits(testCase.text)).pipe(decomposer.writer());
+                    test.dummyStream(
+                        test.randomSplits(testCase.text)
+                    ).pipe(decomposer.writer());
                 });
                 done();
             });
@@ -148,32 +149,3 @@ describe('strangler', function(){
     });
 
 });
-
-var randomSplits = function(str){
-    var parts = [];
-    var size;
-    while(str.length > largestSegment){
-        size = Math.floor(
-            Math.random() * (largestSegment - smallestSegment)
-        )+smallestSegment;
-        parts.push(str.substring(0, size));
-        str = str.substring(size);
-    }
-    parts.push(str);
-    return parts;
-};
-
-var dummyStream = function(dataList){
-    var TestStream = function(){ stream.Readable.call(this) };
-    util.inherits(TestStream, stream.Readable);
-    TestStream.prototype._read = function (numBytes){
-        var stillReading = true;
-        var data;
-        while(stillReading){
-            data = dataList.length?dataList.shift():null;
-            stillReading = this.push(data);
-            if(!dataList.length) stillReading = false;
-        }
-    };
-    return new TestStream();
-};
