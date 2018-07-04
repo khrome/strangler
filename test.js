@@ -94,6 +94,17 @@ describe('strangler', function(){
                 done();
             });
         });
+
+        describe('terminates in groups', function(){
+            test.eachCase(function(testCase, key, done){
+                it('for the '+key+' case', function(){
+                    strangler.splitHonoringQuotes(
+                        testCase.text+"\n"+testCase.text, ' ', '\\', ["'", '"'], "\n"
+                    ).should.deepEqual([testCase.ideal, testCase.ideal]);
+                });
+                done();
+            });
+        });
     });
 
     /*describe('decompose', function(){
@@ -128,6 +139,30 @@ describe('strangler', function(){
                     });
                     test.dummyStream(
                         test.randomSplits(testCase.text)
+                    ).pipe(decomposer.writer());
+                });
+                done();
+            });
+        });
+
+        describe('correctly processes groups', function(){
+            test.eachCase(function(testCase, key, done){
+                var decomposer = new strangler.StreamDecomposer({
+                    delimiter : ' ',
+                    terminator : "\n",
+                    escape : '\\'
+                });
+                it('for the '+key+' case', function(complete){
+                    var tokens = [];
+                    decomposer.on('row', function(row){
+                        tokens.push(row.data);
+                    });
+                    decomposer.on('complete', function(parsed){
+                        tokens.should.deepEqual([testCase.ideal, testCase.ideal]);
+                        complete();
+                    });
+                    test.dummyStream(
+                        test.randomSplits(testCase.text+"\n"+testCase.text)
                     ).pipe(decomposer.writer());
                 });
                 done();

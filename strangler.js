@@ -199,6 +199,7 @@
                     }
                 }
             }
+            if(terminator && results.length) groups.push(results);
             return terminator?groups:results;
         },
         decompose : function(str, splitter, escape, quotes){ //splitHonoringQuotes is faster on chars
