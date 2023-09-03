@@ -6,7 +6,7 @@ strangler.js
 [![npm](https://img.shields.io/npm/dt/strangler.svg)]()
 [![Travis](https://img.shields.io/travis/khrome/strangler.svg)]()
 
-It's a string wrangler, and not nearly as dangerous as it sounds. A set of string utilities which expand those in [string-tools](https://www.npmjs.com/package/string-tools) with additional features.
+It's a string wrangler, and not nearly as dangerous as it sounds. A set of string utilities which expand those in [string-tools](https://www.npmjs.com/package/string-tools) with additional features. ES module native
 
 Usage
 -----
@@ -14,7 +14,8 @@ Often I do string parsing and I like some convenience functions to help out.
 
 you can either retain an instance and use it that way:
 
-    var stringTool = require('strangler');
+    import * as stringTool from 'strangler';
+    // or: const stringTool = require('strangler');
     stringTool.contains(string, substring);
 
 or you can just attach to the prototype (this can be OK in an app, but **is a bad idea in a library**):
