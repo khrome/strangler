@@ -1,8 +1,25 @@
 {
     "name": "strangler",
     "homepage": "https://github.com/khrome/strangler",
-    "version": "2.0.0",
-    "main": "strangler.js",
+    "version": "2.0.1",
+    "type": "module",
+    "main": "dist/index.mjs",
+    "module": "src/index.mjs",
+    "commonjs": "dist/index.cjs",
+    "exports": {
+        ".": {
+            "import": "./src/index.mjs",
+            "require": "./dist/index.cjs"
+        },
+        "./src/index.mjs": {
+            "import": "./src/index.mjs",
+            "require": "./dist/index.cjs"
+        },
+        "./dist/index.cjs": {
+            "import": "./src/index.mjs",
+            "require": "./dist/index.cjs"
+        }
+    },
     "description": "A set of string utilities for parsing and assembly",
     "keywords": [
         "string",
