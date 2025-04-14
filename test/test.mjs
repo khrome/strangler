@@ -87,7 +87,7 @@ describe('strangler', function(){
     describe('splitHonoringQuotes', function(){
         describe('splits quoted strings', function(){
             test.eachCase(function(testCase, key, fullKey, hash){
-                it(hash+': for the '+key+' case', function(){
+                it(hash+' - for the '+key+' case', function(){
                     strangler.splitHonoringQuotes(
                         testCase.text, ' ', '\\'
                     ).should.deep.equal(testCase.ideal);
@@ -97,7 +97,7 @@ describe('strangler', function(){
 
         describe('terminates in groups', function(){
             test.eachCase(function(testCase, key, fullKey, hash){
-                it(hash+': for the '+key+' case', function(){
+                it(hash+' - for the '+key+' case', function(){
                     strangler.splitHonoringQuotes(
                         testCase.text+"\n"+testCase.text, ' ', '\\', ["'", '"'], "\n"
                     ).should.deep.equal([testCase.ideal, testCase.ideal]);
@@ -127,7 +127,7 @@ describe('strangler', function(){
                         terminator : "\n",
                         escape : '\\'
                     });
-                    it(hash+': for the '+key+' case', function(complete){
+                    it(hash+' - for the '+key+' case', function(complete){
                         try{
                             var tokens = [];
                             decomposer.on('token', function(token){
@@ -160,7 +160,7 @@ describe('strangler', function(){
                     terminator : "\n",
                     escape : '\\'
                 });
-                it(hash+': for the '+key+' case', function(complete){
+                it(hash+' - for the '+key+' case', function(complete){
                     try{
                         var tokens = [];
                         decomposer.on('row', function(row){

@@ -15,7 +15,7 @@ const ensureRequire = ()=> (!internalRequire) && (internalRequire = mod.createRe
 // port of npm `string-tools`
 import * as s from './tools.mjs';
 import { isBrowser, isJsDom } from 'browser-or-node';
-import { Emitter } from 'extended-emitter';
+import { ExtendedEmitter } from '@environment-safe/event-emitter';
 import * as mod from 'module';
 let internalRequire = null;
 if(typeof require !== 'undefined') internalRequire = require;
@@ -24,7 +24,7 @@ const ensureRequire = ()=> (!internalRequire) && (internalRequire = mod.createRe
 export const StreamDecomposer = function(options){
     this.options = options || {};
     this.state = newState();
-    new Emitter().onto(this);
+    new ExtendedEmitter().onto(this);
 }
 
 //static utility fns for StreamDecomposer
